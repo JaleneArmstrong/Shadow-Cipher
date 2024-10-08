@@ -1,0 +1,178 @@
+{% extends "layout.html" %}
+{% block title %}How To Play - ShadowCipher{% endblock %}
+{% block page %}How To Play - ShadowCipher{% endblock %}
+
+{% block content %}
+<style>
+    *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    }
+
+    @font-face {
+        font-family: my-font-heading;
+        src: url(/static/custom_fonts/Japanese.ttf);
+    }
+    
+    @font-face {
+        font-family: my-font;
+        src: url(/static/custom_fonts/Museo700-Regular.otf);
+    }
+
+    html, body {
+        height: 100%; /* Important */
+        backdrop-filter: blur(10px);
+        overflow-x: hidden;
+    }
+
+    body {
+        margin: 0;
+        background-color: white;
+        display: flex; /* Important */
+        background-image: url('/static/img/main.png');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-attachment: fixed; /* This keeps the background fixed while scrolling */
+    }
+
+    .how-to-play {
+        width: 65%;
+        background: #262627;
+        border-radius: 3px;
+        text-align: center;
+        padding: 10px 10px 10px 10px;
+        color: #333;
+        box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+        margin-top: 5px !important; /* Important */
+        margin: auto;
+    }
+
+
+    .how-to-play h1 {
+        border: 1px solid rgb(164, 163, 159);
+        border-radius: 5px;
+        background-color: #9e2a34;
+        color: rgb(189, 182, 154);
+        font-family: my-font-heading;
+    }
+
+    .instructions-container{
+        width: calc(100% + 20px); 
+        margin: 0 -10px; 
+        display: flex;
+        flex-wrap: wrap; 
+        
+    }
+
+    .instructions-column{
+        flex: 1; 
+        background-color: rgb(220, 207, 168);
+        border-radius: 10px; 
+        margin: 0 10px 20px; 
+        padding: 20px; 
+        text-align: center; 
+    }
+
+    .instructions-column img{
+        max-width: 80%; 
+        display: block; 
+        margin: 0 auto 20px; 
+        border-radius: 10px; 
+    }
+
+    /* https://stackoverflow.com/questions/19104018/how-to-expand-an-image-in-html-by-clicking-on-it */
+    .instructions-column img:hover{
+        color: #424242; 
+        -webkit-transition: all .5s ease-in-out;
+        -moz-transition: all .5s ease-in-out;
+        -ms-transition: all .5s ease-in-out;
+        -o-transition: all .5s ease-in-out;
+        transition: all .5s ease-in-out;
+        opacity: 1;
+        transform: scale(4);
+        -ms-transform: scale(4); /* IE 9 */
+        -webkit-transform: scale(4); /* Safari and Chrome */
+    }
+
+    .instructions-column p{
+        font-size: 13.5px;
+        font-family: my-font;
+    }
+
+    .instructions-column h2{
+        font-size: 20px;
+        font-family: my-font;
+        margin-bottom: 10px;
+    }
+
+</style>
+<body>
+    <div class="how-to-play-container">
+        <div class="how-to-play">
+            <h1>How To Play</h1>
+            <div class="instructions-container">
+                <div class="instructions-column">
+                    <img src="/static/img/how-to-play_welcome-to-shadowcipher.jpeg" alt="Image of the game page at the start of a new game.">
+                    <h2>| 1 |</h2>
+                    <p>
+                        Welcome to ShadowCipher!<br><br>
+                        You goal is to decode the a secret number chosen by your opponent within a limited number of guesses.<br><br>
+                        Can you crack the code?
+                    </p>
+                </div>
+
+                <div class="instructions-column">
+                    <img src="/static/img/how-to-play_make-a-guess.jpeg" alt="Image of the game page as a guess is being made.">
+                    <h2>| 2 |</h2>
+                    <p>
+                        To make a guess, enter a digit from 0-9 into each available slot, then press 'SUBMIT'.<br><br>
+                        Note: Repeated use of the same digit and non-numerical characters are not allowed.
+                    </p>
+                </div>
+
+                <div class="instructions-column">
+                    <img src="/static/img/how-to-play_guess-feedback-1.jpeg" alt="Image of the game page after one (1) guess has been made.">
+                    <h2>| 3 |</h2>
+                    <p>
+                        After each guess, clues are given in the form of three (3) distinct values:<br><br>
+                        'Shuriken' -> The digit is fully correct.<br>
+                        'Kunai' -> The digit is correct, but in the wrong position.<br>
+                        'Smoke' -> The digit is fully incorrect.
+                    </p>
+                </div>
+            </div>
+            <div class="instructions-container">
+                <div class="instructions-column">
+                    <img src="/static/img/how-to-play_guess-feedback-2.jpeg" alt="Image of the game page after a second guess has been made.">
+                    <h2>| 4 |</h2>
+                    <p>
+                        Additionally, each digit in the clue is colour-coded accordingly:<br><br>
+                        Green -> 'Shuriken'<br>
+                        Yellow -> 'Kunai'<br>
+                        Brown -> 'Smoke'<br>
+                </div>
+
+                <div class="instructions-column">
+                    <img src="/static/img/how-to-play_guess-feedback-3.jpeg" alt="Image of the game page after multiple guesses have been made.">
+                    <h2>| 5 |</h2>
+                    <p>
+                        With each guess, use the feedback to refine your strategy and get closer to victory.
+                    </p>
+                </div>
+
+                <div class="instructions-column">
+                    <img src="/static/img/how-to-play_victory.jpeg" alt="Image of the game page after winning the game.">
+                    <h2>| 6 |</h2>
+                    <p>
+                        Keep guessing and analyzing until you've cracked the code!
+                    </p>
+                </div>
+            </div>
+            <div style="font-family: my-font;">
+                <a href="javascript:history.back()" style="color: rgb(189, 182, 154); font-size: 1.1em;">Go Back</a>
+            </div>
+        </div>
+    </div>    
+</body>
+{% endblock %}

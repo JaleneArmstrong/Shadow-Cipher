@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+{% block title %}Bad Request - ShadowCipher{% endblock %}
+{% block page %}Bad Request - ShadowCipher{% endblock %}
+
+{{ super() }}
+
+{% block content %}
+<div class="container">
+    <div class="row" style="margin-top: 10%;">
+        <div class="col s12 m10 offset-m1">
+            <div class="card-content">
+                <h1>400 - Bad Request</h1>
+                <p>Your browser has sent a request that is non-comprehensible to the server.</p>
+                <p>Error: {{error}}</p>
+            </div>
+            <div class="card-action">
+                <a href="/" class="waves-effect waves-light btn">Go Home</a>
+                <a href="javascript:history.back()" class="waves-effect waves-light btn">Go Back</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

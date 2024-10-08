@@ -1,0 +1,189 @@
+{% extends "layout.html" %}
+{% block title %}ShadowCipher{% endblock %}
+{% block page %}ShadowCipher{% endblock %}
+
+{{ super() }}
+
+{% block content %}
+
+  <style>
+      @media only screen and (max-width: 768px) {
+
+      .home-card {
+          border-width: 20px; /* Adjust border width for mobile screens */
+
+      }
+
+      body {
+        background-image: url('/static/img/small_main.png') !important;
+        background-repeat: no-repeat !important;
+        background-size: cover !important;
+      }
+
+      }
+
+      *{
+          padding: 0;
+          margin: 0;
+          box-sizing: border-box;
+      }
+
+      @font-face {
+          font-family: my-font;
+          src: url(/static/custom_fonts/Museo700-Regular.otf);
+      }
+
+      @font-face {
+          font-family: my-fancy-font;
+          src: url(/static/custom_fonts/Japanese.ttf);
+      }
+
+      body{
+          background-color: rgb(53, 52, 47);
+          height: 100vh; /* Set the height of the body to fill the viewport */
+          display: flex;
+          justify-content: center;
+          align-items: center;
+
+          background-image: url('/static/img/main.png');
+          background-size: cover;
+          background-repeat: no-repeat;
+          background-attachment: fixed; /* This keeps the background fixed while scrolling */
+      }
+
+
+      .home-card{
+          margin: 0 auto; /* Centers the element horizontally */
+          text-align: center; /* Centers the content within the element */
+          height: 60%;
+          max-width: 100%; /* Sets a maximum width for the card */
+          border: 10px double #ABA297; 
+          border-radius: 20px; 
+          backdrop-filter: blur(10px); 
+          background: transparent; 
+          /* padding-bottom: 45px; */
+          padding: 45px;
+      }
+
+      .home-card-image {
+          position: relative; /* Enables relative positioning for the image container */
+          margin-bottom: 0px;
+      }
+
+
+      .home-card-words{
+          font-family: my-font;
+          margin-bottom: 10px;
+          color: rgba(225, 229, 234, 0.868);
+      }
+
+      .home-card-words span{
+          font-family: my-fancy-font;
+          font-size: 2.8em;
+      }
+
+
+      .home-card-action{
+          font-family: my-fancy-font;
+          display: flex;
+
+      }
+
+      .home-card-action a:nth-child(1){
+          background-color: white;
+          width: 50%; /* Set a specific width for the button */
+          flex-grow: 1;
+          margin-left: 10px; /* Add margin between the buttons */
+          margin-right: 10px; /* Add margin between the buttons */
+      }
+
+      .home-card-action a:nth-child(2) {
+          background-color: white;
+          width: 50%; /* Set a specific width for the button */
+          flex-grow: 1;
+          margin-right: 10px; /* Add margin between the buttons */
+      }
+
+
+      .button {
+          background-color: rgba(255, 255, 255, 0.5); /* Transparent white background */
+          -webkit-border-radius: 10px;
+          border-radius: 10px;
+          border: none;
+          color: #333333; /* Dark text */
+          cursor: pointer;
+          display: inline-block;
+          font-family: my-fancy-font;
+          font-size: 20px;
+          padding: 5px 10px;
+          text-align: center;
+          text-decoration: none;
+          -webkit-animation: glowing 1500ms infinite;
+          -moz-animation: glowing 1500ms infinite;
+          -o-animation: glowing 1500ms infinite;
+          animation: glowing 1500ms infinite;
+      }
+
+      @-webkit-keyframes glowing {
+          0% { background-color: rgba(0, 0, 0, 0.5); -webkit-box-shadow: 0 0 3px #333333; }
+          50% { background-color: rgba(255, 255, 255, 0.5); -webkit-box-shadow: 0 0 40px #333333; }
+          100% { background-color: rgba(0, 0, 0, 0.5); -webkit-box-shadow: 0 0 3px #333333; }
+      }
+
+      @-moz-keyframes glowing {
+          0% { background-color: rgba(0, 0, 0, 0.5); -moz-box-shadow: 0 0 3px #333333; }
+          50% { background-color: rgba(255, 255, 255, 0.5); -moz-box-shadow: 0 0 40px #333333; }
+          100% { background-color: rgba(0, 0, 0, 0.5); -moz-box-shadow: 0 0 3px #333333; }
+      }
+
+      @-o-keyframes glowing {
+          0% { background-color: rgba(0, 0, 0, 0.5); box-shadow: 0 0 3px #333333; }
+          50% { background-color: rgba(255, 255, 255, 0.5); box-shadow: 0 0 40px #333333; }
+          100% { background-color: rgba(0, 0, 0, 0.5); box-shadow: 0 0 3px #333333; }
+      }
+
+      @keyframes glowing {
+          0% { background-color: rgba(0, 0, 0, 0.5); box-shadow: 0 0 3px #333333; }
+          50% { background-color: rgba(255, 255, 255, 0.5); box-shadow: 0 0 40px #333333; }
+          100% { background-color: rgba(0, 0, 0, 0.5); box-shadow: 0 0 3px #333333; }
+      }
+  </style>
+
+  <body>
+      <div class="home-card">          
+
+          <div class="home-card-content">
+
+              <div class="home-card-image">
+                  <img src="/static/img/logo.png" alt="logo" style="max-width: 150px;">
+              </div> 
+
+              <div class="home-card-words">                
+                  <span>Shadow Cipher</span>
+
+                  <br>
+                  <br>
+
+                  <p>
+                      Ninjas, your mission awaits:
+                      Navigate the puzzle with precision and agility.<br>
+                      Time is of the essence, as each daybreak brings a new challenge.<br>
+                      Are You Ready?
+                  </p>              
+
+                  <p>   
+                      <sub>ShadowCipher draws inspiration from 'Bulls and Cows,' an independent game predating 
+                          Mastermind™
+                      </sub>
+                  </p><br>
+              </div>
+
+              <div class="home-card-action">
+                  <a class="button" href="login_page" class="blue-text text-white btn"><span>B e g i n</span></a>
+                  <a class="button" href="/howtoplay" class="blue-text text-white btn"><span>H o w  t o  P l a y</span></a>
+              </div>            
+          </div>
+      </div>
+  </body>
+
+{% endblock %}

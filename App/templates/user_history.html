@@ -1,0 +1,105 @@
+{% extends "layout.html" %}
+{% block title %}User History: {{ user.username }} - ShadowCipher{% endblock %}
+{% block page %}User History: {{ user.username }} - ShadowCipher{% endblock %}
+
+{{ super() }}
+
+{% block content %}
+<body class="content fill-space" style="background-color: #262627; background-image: url('/static/img/bg.png'); background-size: contain; background-repeat: no-repeat;">
+  <nav class="nav-extended" style="margin-bottom:10px; background-color: #202020;">
+    <div class="nav-wrapper row">
+      <a href="#" style="font-size: 1.5em; margin-left: 10px" class="brand-logo left">{{ user.username }}'s Game History</a>
+      <div>
+        <ul id="nav-mobile" class="right">
+<!--             <li><a style="border-right: solid 2px white; border-left: solid 2px white; padding-left: 30px; padding-right: 30px;" href="javascript:history.back()">Back</a></li> -->
+            <li><a href="/logout">Logout</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <div>
+        
+
+  <div class="row" style="position: absolute; height:20px; top:0; z-index:10; width:100vw">
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        {% for message in messages %}
+          <div class="blue lighten-5 col s10 offset-s1">
+            <div class="row"> 
+                <div class="col s11" style="font-weight: bold;text-align: center">
+                  {{ message }}
+                </div>
+                <div class="col s1">
+                  <a href="" style="font-size:1.5em" >&times;</a>
+                </div>  
+            </div>
+          </div> 
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+  </div>
+
+  <div class="row" style="margin: 0; padding:0; margin-top:-10px">
+    <div class="col s12 m9 l8">
+      <span style="color: white;">Games Attempted: ({{ num_games }})</span>
+    </div>
+  </div>
+
+  <div class="row">
+    <section class="col s12 m9 l8" style="overflow-y:scroll; height: 80vh">
+      {% if not user_games %}
+      <p style="color: white">You haven't played any games yet!</p>
+      {% else %}
+      <div class="responsive-table">
+        <table class="centered highlight striped" style="color: white">
+          <thead style="width: 100%">
+            <tr>
+              <th>Date</th>
+              <th>No. Digits</th>
+              <th>Max Attempts</th>
+              <th>No. Guesses</th>
+              <th>Guesses</th>
+            </tr>
+          </thead>
+          <tbody style="width: 100%">
+            {% for game in user_games %}
+            <tr>
+              <td>{{ game.date.strftime('%B %d, %Y') }}</td>
+              <td>{{ game.answer_length }}</td>
+              <td>{{ game.max_attempts }}</td>
+              <td>{{ game.num_guesses }}</td>
+              <td><a class="white-text btn" style="background-color: #CD6240;" href="/user_history/{{ user.id }}/{{ game.id }}#{{ game.date.strftime('%Y-%m-%d') }}" disabled>View Details</a></td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+      {% endif %}
+    </section>
+
+    <section class="col s12 m3 l4" style="height: 70vh">
+      {% if not selected_game %}
+      <p style="color: white"> No Games Selected</p>
+      {% else %}
+      <ul class="collection" style="border: none">
+        {% for labeled_guess in selected_game.labeled_guesses %}
+        <li class="collection-item" style="background-color: inherit; border: none">
+          <div style="display: flex; justify-content: center; margin-bottom: 10px;">
+            {% for digit, label in labeled_guess %}
+                {% if label == 'bull' %}
+                    <input type="text" value="{{ digit }}" style="margin: 0 5px; flex: 1; border-radius: 3px; padding: 6px; color: white; font-size: 25px; text-align: center; border: 5px solid #89AF9E;" readonly>
+                {% elif label == 'cow' %}
+                    <input type="text" value="{{ digit }}" style="margin: 0 5px; flex: 1; border-radius: 3px; padding: 6px; color: white; font-size: 25px; text-align: center; border: 5px solid #E8C980;" readonly>
+                {% else %}
+                    <input type="text" value="{{ digit }}" style="margin: 0 5px; flex: 1; border-radius: 3px; padding: 6px; color: white; font-size: 25px; text-align: center; border: 5px solid #AF9E89;" readonly>
+                {% endif %}    
+            {% endfor %}
+        </div>
+        </li>
+        {% endfor %}
+      </ul>
+      {% endif %}
+    </section>
+  </div>
+</body>
+{% endblock %}

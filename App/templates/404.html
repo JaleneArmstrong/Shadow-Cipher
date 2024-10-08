@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+{% block title %}Not Found - ShadowCipher{% endblock %}
+{% block page %}Not Found - ShadowCipher{% endblock %}
+
+{{ super() }}
+
+{% block content %}
+<div class="container">
+    <div class="row" style="margin-top: 10%;">
+        <div class="col s12 m10 offset-m1">
+            <div class="card-content">
+                <h1>404 - Page Not Found</h1>
+                <p>Oops. The page you requested page either does not exist or the URL you provided is broken.<br>Please check the URL and try again.</p>
+                <p>Error: {{error}}</p>
+            </div>
+            <div class="card-action">
+                <a href="/" class="waves-effect waves-light btn">Go Home</a>
+                <a href="javascript:history.back()" class="waves-effect waves-light btn">Go Back</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

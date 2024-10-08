@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+{% block title %}Not Authorized - ShadowCipher{% endblock %}
+{% block page %}Not Authorized - ShadowCipher{% endblock %}
+
+{{ super() }}
+
+{% block content %}
+<style>
+    @font-face {
+          font-family: my-font;
+          src: url(/static/custom_fonts/Museo700-Regular.otf);
+      }
+</style>
+
+<body style="background-image: url('/static/img/bg.png'); background-size: cover; background-repeat: no-repeat; background-position: center; background-color: #262627;">
+    <div class="card" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); max-width: 500px; border: 10px double #ABA297; border-radius: 20px; backdrop-filter: blur(10px); background: transparent; ">
+        <div class="card-content" style="color: white; text-align: center;">
+            <h1 style="font-family: my-font; font-size: 2.5em; align-self: center;">401 - Not Authorized</h1>
+            <span>You do not have permission to access this resource.</span> 
+            <p>Please check your credentials and try again.</p>
+
+            <br>
+        </div>
+        <div class="card-action" style="display: flex; justify-content: space-evenly;">
+            <a href="/" class="white-text btn" style="background-color: #CD6240;">Home</a>
+            <a href="javascript:history.back()" class="white-text btn" style="background-color: #CD6240;">Back</a>
+        </div>
+    </div>
+</body>
+{% endblock %}

@@ -1,0 +1,37 @@
+{% extends "layout.html" %}
+{% block title %}Sensei - ShadowCipher{% endblock %}
+{% block page %}Sensei - ShadowCipher{% endblock %}
+
+{{ super() }}
+
+{% block content %}
+<style>
+    @font-face {
+          font-family: my-font;
+          src: url(/static/custom_fonts/Museo700-Regular.otf);
+      }
+</style>
+
+<body style="background-image: url('/static/img/bg.png'); background-size: cover; background-repeat: no-repeat; background-position: center; background-color: #262627;">
+    <div class="card" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); max-width: 500px; border: 10px double #ABA297; border-radius: 20px; backdrop-filter: blur(10px); background: transparent; ">
+        <div class="card-content" style="color: white; text-align: center;">
+            <h1 style="font-family: my-font; font-size: 2.5em; align-self: center;">Sensei - Initialization</h1>
+            <div>
+                <span>Welcome Sensei, We Respond At Your /init Command</span>
+                <p>Please Input The Secret Code To Authorize Your Identity</p>
+                <br>
+            </div>
+            <form action="/init" method="GET">
+                <div style="display: grid; grid-template-columns: repeat(7, 1fr);">
+                    {% for i in range(14) %}
+                    <input type="text" id="{{ i }}" name="{{ i }}" maxlength="1" style="color: white; border-radius: 3px; font-size: 25px; text-align: center; border: 2px solid #AF9E89;">
+                    {% endfor %}
+                </div>
+                <div class="card-action" style="display: flex; justify-content: center;">
+                    <button class="white-text btn" type="submit" style="background-color: #CD6240; border-radius: 20px; font-size: 1.2em;">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+{% endblock %}

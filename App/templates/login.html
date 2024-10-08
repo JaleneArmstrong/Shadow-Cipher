@@ -1,0 +1,52 @@
+{% extends "layout.html" %}
+{% block title %}Login - ShadowCipher{% endblock %}
+{% block page %}Login - ShadowCipher{% endblock %}
+
+{% block content %}
+<style>
+    /* Media query for smaller screens */
+    @media only screen and (max-width: 768px) {
+        body {
+            background-image: url('/static/img/small_login.png') !important;
+            background-size: contain !important;
+            background-color: #262627 !important; 
+        }
+    }
+</style>
+
+<body class="content fill-space" style="background-color: #262627; background-image: url('/static/img/login.png'); background-position: center; background-size: contain; background-repeat: no-repeat;">
+    <div class="row">
+        <!-- <div class="col s12 m6" style="padding: 0%;">
+            <img class="responsive-img" src="/static/img/Login_Page_Background.png" style="width: 100%; height: 100%; object-fit: full">
+        </div> -->
+        <div class="col s12 m6 offset-m6">
+            <div class="subcontent center-vertical">
+                <main class="container" style="margin-top:50px">
+                    <h3 style="color: #ABA297;">Login</h3>
+                    <form class="col s12" id="loginForm" method="POST" action="/login">
+                        <div class="row">
+                            <label for="username">Username</label><br>
+                            <div class="input-field col s7" style="background-color: #ABA297; border-radius: 100px;">
+                            <input name="username" type="text" required>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <label for="password">Password</label><br>
+                            <div class="input-field col s7" style="background-color: #ABA297; border-radius: 100px;">
+                            <input name="password" type="password" required>
+                            </div>
+                        </div>
+                        <div class="row" style="color: #ABA297;">
+                            <label for="signup_option">Don't have an account?</label>
+                            <a name="signup_option" href="/signup_page" style="color: inherit; text-decoration: underline;">Sign-Up!</a>
+                        </div>
+                        <div class="row" style="padding-right: 6em;">
+                            <button class="btn" type="submit" style="border-radius: 20px; font-size: 1.3em; background-color: #CD6240;">Play</button>
+                        </div>                        
+                    </form>                    
+                </main>
+            </div>
+        </div>
+    </div>
+</body>
+{% endblock %}
